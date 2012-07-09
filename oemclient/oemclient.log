@@ -1,0 +1,153 @@
+2012-07-08 10:59:30,160 - INFO - Starting new HTTPS connection (1): developer3.envoyww.com
+2012-07-08 10:59:31,337 - DEBUG - "POST /ea/bin/pwisapi.dll HTTP/1.1" 200 1297
+2012-07-08 10:59:31,396 - DEBUG - This is a multi-part message in MIME format. 
+
+------=_NextPart_134175957050063
+Content-Disposition: form-data; name=PWF_MBML
+
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Response errorstyle="EMBEDDED" version="EXAPI 2.0">
+	<Username>SCEAdmin</Username>
+	<Password>SCEAdmin</Password>
+	<Domain>SCE</Domain>
+	<OemId>SCE</OemId>
+	<OemPassword>summer</OemPassword>
+	<RequestType>commit</RequestType>
+	<Warnings>0</Warnings>
+	<Errors>0</Errors>
+	<Job>
+		<ID>k55itkpp3</ID>
+		<TotalCost>0</TotalCost>
+		<AggregateJobStatus>Initialized</AggregateJobStatus>
+		<TotalEMU>0</TotalEMU>
+		<RequestedStartTime>2012:07:08 14:59:30</RequestedStartTime>
+		<RequestedStartTimeModifier>StartingAt</RequestedStartTimeModifier>
+		<LastFirstAttemptDelta>-1</LastFirstAttemptDelta>
+		<Command>submit</Command>
+		<Block>
+			<ID>k7tzdkwab</ID>
+			<Status>Initial</Status>
+			<Details>None</Details>
+			<Ordinal>0</Ordinal>
+			<ParentDeliveryBlockId/>
+		</Block>
+	</Job>
+</Response>
+------=_NextPart_134175957050063
+Content-Disposition: form-data; name=PWF_SESSION_ID
+
+
+------=_NextPart_134175957050063
+Content-Disposition: form-data; name=SITENAME
+
+developer3.envoyww.com
+------=_NextPart_134175957050063
+Content-Disposition: form-data; name=SITEPROTOCOL
+
+https
+------=_NextPart_134175957050063--
+
+
+2012-07-08 11:00:33,709 - INFO - Starting new HTTPS connection (1): developer3.envoyww.com
+2012-07-08 11:00:34,556 - DEBUG - "POST /ea/bin/pwisapi.dll HTTP/1.1" 200 1297
+2012-07-08 11:00:34,605 - DEBUG - This is a multi-part message in MIME format. 
+
+------=_NextPart_134175963350149
+Content-Disposition: form-data; name=PWF_MBML
+
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Response errorstyle="EMBEDDED" version="EXAPI 2.0">
+	<Username>SCEAdmin</Username>
+	<Password>SCEAdmin</Password>
+	<Domain>SCE</Domain>
+	<OemId>SCE</OemId>
+	<OemPassword>summer</OemPassword>
+	<RequestType>commit</RequestType>
+	<Warnings>0</Warnings>
+	<Errors>0</Errors>
+	<Job>
+		<ID>k55jhkpp3</ID>
+		<TotalCost>0</TotalCost>
+		<AggregateJobStatus>Initialized</AggregateJobStatus>
+		<TotalEMU>0</TotalEMU>
+		<RequestedStartTime>2012:07:08 15:00:33</RequestedStartTime>
+		<RequestedStartTimeModifier>StartingAt</RequestedStartTimeModifier>
+		<LastFirstAttemptDelta>-1</LastFirstAttemptDelta>
+		<Command>submit</Command>
+		<Block>
+			<ID>k7hghkwab</ID>
+			<Status>Initial</Status>
+			<Details>None</Details>
+			<Ordinal>0</Ordinal>
+			<ParentDeliveryBlockId/>
+		</Block>
+	</Job>
+</Response>
+------=_NextPart_134175963350149
+Content-Disposition: form-data; name=PWF_SESSION_ID
+
+
+------=_NextPart_134175963350149
+Content-Disposition: form-data; name=SITENAME
+
+developer3.envoyww.com
+------=_NextPart_134175963350149
+Content-Disposition: form-data; name=SITEPROTOCOL
+
+https
+------=_NextPart_134175963350149--
+
+
+2012-07-08 11:08:40,428 - INFO - Starting new HTTPS connection (1): developer3.envoyww.com
+2012-07-08 11:08:41,505 - DEBUG - "POST /ea/bin/pwisapi.dll HTTP/1.1" 200 1297
+2012-07-08 11:08:41,558 - DEBUG - This is a multi-part message in MIME format. 
+
+------=_NextPart_134176012050164
+Content-Disposition: form-data; name=PWF_MBML
+
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Response errorstyle="EMBEDDED" version="EXAPI 2.0">
+	<Username>SCEAdmin</Username>
+	<Password>SCEAdmin</Password>
+	<Domain>SCE</Domain>
+	<OemId>SCE</OemId>
+	<OemPassword>summer</OemPassword>
+	<RequestType>commit</RequestType>
+	<Warnings>0</Warnings>
+	<Errors>0</Errors>
+	<Job>
+		<ID>k55ahkpp3</ID>
+		<TotalCost>0</TotalCost>
+		<AggregateJobStatus>Initialized</AggregateJobStatus>
+		<TotalEMU>0</TotalEMU>
+		<RequestedStartTime>2012:07:08 15:08:40</RequestedStartTime>
+		<RequestedStartTimeModifier>StartingAt</RequestedStartTimeModifier>
+		<LastFirstAttemptDelta>-1</LastFirstAttemptDelta>
+		<Command>submit</Command>
+		<Block>
+			<ID>k75jdkwab</ID>
+			<Status>Initial</Status>
+			<Details>None</Details>
+			<Ordinal>0</Ordinal>
+			<ParentDeliveryBlockId/>
+		</Block>
+	</Job>
+</Response>
+------=_NextPart_134176012050164
+Content-Disposition: form-data; name=PWF_SESSION_ID
+
+
+------=_NextPart_134176012050164
+Content-Disposition: form-data; name=SITENAME
+
+developer3.envoyww.com
+------=_NextPart_134176012050164
+Content-Disposition: form-data; name=SITEPROTOCOL
+
+https
+------=_NextPart_134176012050164--
+
+

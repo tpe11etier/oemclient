@@ -1,0 +1,4 @@
+[Oemclient]
+url = https://developer3.envoyww.com/ea/bin/pwisapi.dll
+file = sce_interruptS.xml 
+charset = UTF-8

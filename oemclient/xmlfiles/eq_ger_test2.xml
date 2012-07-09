@@ -1,0 +1,66 @@
+<Request version="EXAPI 2.0" errorstyle="SEPARATE" prunelist="//Message,//DeliveryRequest,//Contact,//Block">
+<Username>equinixadmin</Username>
+<Password>eqxadmin!$7aPi</Password>
+<Domain>EQUINIX_API</Domain>
+<OemId>equinix_api_oem</OemId>
+<OemPassword>4?Acap#E</OemPassword>
+<RequestType>Commit</RequestType>
+<Job>
+<UserReference>EQ-20120629-0015</UserReference>
+<Message>
+    <Subject></Subject>
+        <MessageArg>
+          <Name>BODY</Name>
+            <Value>F&#252;r das Rechenzentrum SV3 liegt uns eine wichtige Information vor, für Sie von Interesse sein kann. Weitere Informationen erhalten Sie über Ihre Emails oder das Equinix Kunden Portal.</Value>
+        </MessageArg>
+        <MessageArg>
+            <Name>SENDER</Name>
+            <Value>Equinix Alerts</Value>
+        </MessageArg>
+        <MessageArg>
+            <Name>CALLERID</Name>
+            <Value>18668118720</Value>
+        </MessageArg>
+        <MessageArg>
+            <Name>TTS_VOICE</Name>
+            <Value>beate</Value>
+        </MessageArg>
+        <MessageArg>
+            <Name>THEME</Name>
+            <Value>equinix_api:;VOICETALENT:F_GER_EUR_1</Value>
+        </MessageArg>
+        <MessageArg>
+            <Name>BRANDING_DISABLED</Name>
+            <Value>YES</Value>
+        </MessageArg>
+        <MessageArg>
+            <Name>LEARN_MORE_DISABLED</Name>
+            <Value>YES</Value>
+        </MessageArg>
+        <MessageArg>
+            <Name>SMS_LANGUAGE</Name>
+            <Value>GERMAN</Value>
+        </MessageArg>
+    <MessageArg>
+        <Name>SMS_CHAR_MAPPING</Name>
+        <Value>NONE</Value>
+    </MessageArg>
+    </Message>
+<Contact>
+    <FirstName>Equinix Customers</FirstName>
+    <ContactMethod>
+        <Transport>SMS</Transport>
+        <PhoneNum>6037154327</PhoneNum>
+        <!--
+        <PhoneNum>4083071767</PhoneNum>
+        -->
+    </ContactMethod>
+</Contact>
+<Block>
+<DeliveryRequest>
+<MessagePath>Message[1]</MessagePath>
+<ContactMethodPath>Contact[1]/ContactMethod[1]</ContactMethodPath>
+</DeliveryRequest>
+</Block>
+</Job>
+</Request>

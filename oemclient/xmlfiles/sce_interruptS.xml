@@ -1,0 +1,68 @@
+<Request prunelist="//DeliveryRequest,//Contact,//Message" errorstyle="EMBEDDED" version="EXAPI 2.0">
+<!--
+	<USERNAME>sceuser</USERNAME>
+	<PASSWORD>pk47x9</PASSWORD>
+	<DOMAIN>SCE5</DOMAIN>
+	<OEMID>SCE5</OEMID>
+	<OEMPASSWORD>d6fk34</OEMPASSWORD>
+-->
+
+	<USERNAME>SCEAdmin</USERNAME>
+	<PASSWORD>SCEAdmin</PASSWORD>
+	<DOMAIN>SCE</DOMAIN>
+	<OEMID>SCE</OEMID>
+	<OEMPASSWORD>summer</OEMPASSWORD>
+
+	<REQUESTTYPE>commit</REQUESTTYPE>
+	<JOB><MESSAGE>
+			<SUBJECT>SCE Interrupt Start</SUBJECT>
+			<MESSAGEARG><NAME>THEME</NAME><VALUE>SCE:interruptE;SCE:</VALUE></MESSAGEARG>
+			<MESSAGEARG><Name>SENDER</Name><Value>SCE</Value></MESSAGEARG>
+			<MESSAGEARG><Name>EMAIL_ADDR</Name><Value>TechSupport@varolii.com</Value></MESSAGEARG>
+			<MESSAGEARG><NAME>USER_TIME</NAME><VALUE>23:30</VALUE></MESSAGEARG>
+			<MESSAGEARG><NAME>USER_DATE</NAME><VALUE>4/9/2012</VALUE></MESSAGEARG>
+			<MESSAGEARG><NAME>GROUPS1</NAME><VALUE>V,P,Q,S,T,V</VALUE></MESSAGEARG>
+			<MESSAGEARG><NAME>TEST_DUMP_VML</NAME><VALUE>YES</VALUE></MESSAGEARG>
+			<MESSAGEARG><NAME>TEST_DUMP_VMLSTEPS</NAME><VALUE>YES</VALUE></MESSAGEARG>
+			<MESSAGEARG><NAME>TEST_DUMP_VALUEDICT</NAME><VALUE>YES</VALUE></MESSAGEARG>			
+		</MESSAGE>
+
+		<CONTACT label="0000000001">
+			<FIRSTNAME><![CDATA[Jorge]]></FIRSTNAME>
+			<LASTNAME><![CDATA[Sierra]]></LASTNAME>
+			<COMPANY><![CDATA[Varolii]]></COMPANY>
+			<ContactMethod label="0000000001">
+				<Transport>PHONE</Transport>
+				<Qualifier>OFFICE</Qualifier>
+				<Ordinal>1</Ordinal>
+				<PhoneNum><![CDATA[6037154327]]></PhoneNum>
+			</ContactMethod>
+			<ContactMethod label="0000000002">
+				<Transport>EMAIL</Transport>
+				<Qualifier>OFFICE</Qualifier>
+				<Ordinal>1</Ordinal>
+				<EmailAddress><![CDATA[tony.pelletier@varolii.com]]></EmailAddress>
+			</ContactMethod>
+			<ContactMethod label="0000000003">
+				<Transport>FAX</Transport>
+				<Qualifier>OFFICE</Qualifier>
+				<PhoneNum><![CDATA[4132157438]]></PhoneNum>
+			</ContactMethod>
+		</CONTACT>
+		<Block>
+		<DeliveryRequest>
+			<MessagePath>Message[1]</MessagePath>
+			<ContactMethodPath>Contact[@label="0000000001"]/ContactMethod[@label="0000000002"]</ContactMethodPath>
+		</DeliveryRequest>	
+<!--		
+		<DeliveryRequest>
+			<MessagePath>Message[1]</MessagePath>
+			<ContactMethodPath>Contact[@label="0000000001"]/ContactMethod[@label="0000000002"]</ContactMethodPath>
+		</DeliveryRequest>			
+		<DeliveryRequest>
+			<MessagePath>Message[1]</MessagePath>
+			<ContactMethodPath>Contact[@label="0000000001"]/ContactMethod[@label="0000000003"]</ContactMethodPath>
+		</DeliveryRequest> -->
+
+		</Block>
+	</JOB></Request>
