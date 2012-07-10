@@ -8,5 +8,6 @@ setup(name='oemclient',
 	author='Tony Pelletier',
 	author_email='tony.pelletier@gmail.com',
 	packages = ['oemclient'],
-	py_modules = ['oemclient']
+	package_data = {'package' : 'files'},
+	py_modules = ['oemclient'],
 )

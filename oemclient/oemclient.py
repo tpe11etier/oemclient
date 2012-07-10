@@ -5,7 +5,7 @@ import requests
 import logging
 import codecs
 import ConfigParser
-import os
+import os, sys
 
 from io import BytesIO
 from uuid import uuid4
@@ -22,9 +22,16 @@ CONF = ConfigParser.ConfigParser()
 
 try:
 	CONF.read("oemclient.props")
-	url = CONF.get("Oemclient", "url")
-	file = CONF.get("Oemclient", "file")
-	charset = CONF.get("Oemclient", "charset")
+	try:
+		url = CONF.get("Oemclient", "url")
+		file = CONF.get("Oemclient", "file")
+		charset = CONF.get("Oemclient", "charset")
+	except ConfigParser.NoSectionError as e:
+		print '%s in oemclient.props found.' % e
+		sys.exit()
+	except ConfigParser.NoOptionError as e:
+		print '%s in oemclient.props found.' % e
+		sys.exit()
 except IOError as e:
 	print 'File %s not found!' % e
 
@@ -102,29 +109,14 @@ XML = """
 """
 
 def choose_boundary():
-	"""
-	Our embarassingly-simple replacement for mimetools.choose_boundary.
-	"""
 	return uuid4().hex
 
 
 def my_encode_multipart_formdata(fields, boundary=None):
-
 	"""
-Encode a dictionary of ``fields`` using the multipart/form-data mime format.
-
-:param fields:
-	Dictionary of fields or list of (key, value) field tuples.  The key is
-	treated as the field name, and the value as the body of the form-data
-	bytes. If the value is a tuple of two elements, then the first element
-	is treated as the filename of the form-data section.
-
-	Field names and filenames must be unicode.
-
-:param boundary:
-	If not specified, then a random boundary will be generated using
-	:func:`mimetools.choose_boundary`.
-"""
+	I am overriding this function from urllib3 to get the formatting the way the API accepts it as well as passing
+	in the character set.
+	"""
 	body = BytesIO()
 	if boundary is None:
 		boundary = choose_boundary()
@@ -134,7 +126,6 @@ Encode a dictionary of ``fields`` using the multipart/form-data mime format.
 
 		if isinstance(value, tuple):
 			filename, data = value
-			#charset = 'UTF-8'
 			body.write(b('Content-Type: application/x-www-form-urlencoded; charset="%s"\r\n' % charset))
 			writer(body).write('Content-Disposition: form-data; name="%s"\r\n' % fieldname)
 			body.write('\r\n' )
@@ -163,18 +154,25 @@ Encode a dictionary of ``fields`` using the multipart/form-data mime format.
 
 
 def event_create(url=None, file=None):
-	try:
-		file = open(os.path.abspath(os.path.join(os.curdir, 'xmlfiles',file)), 'rb').read()
-		payload = {'PWFORM' : '38', 'PWF_MBML' : file}
+	if file == 'None':
+		file = XML
+	else:
 		try:
+			file = open(os.path.abspath(os.path.join(os.curdir, 'xmlfiles',file)), 'rb').read()
+		except IOError as e:
+			print "File %s not found.  Be sure you specified a file in oemclient.props" % e
+			return None
+
+	if file != None:
+		try:
+			payload = {'PWFORM' : '38', 'PWF_MBML' : file}
 			result = requests.post(url, files=payload)
 			logging.debug(result.text)
 			print result.text
 		except Exception as e:
 			print e
 			print "ERROR: A connection error has occurred. "
-	except IOError as e:
-		print "File %s not found.  Be sure you specified a file in oemclient.props" % e
+
 
 
 

@@ -3,3 +3,5 @@ README
 setup.py
 oemclient/__init__.py
 oemclient/oemclient.py
+oemclient/xmlfiles/eq_ger_test2.xml
+oemclient/xmlfiles/sce_interruptS.xml
