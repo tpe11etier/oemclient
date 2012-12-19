@@ -25,6 +25,7 @@ try:
         url = CONF.get("Oemclient", "url")
         file = CONF.get("Oemclient", "file")
         charset = CONF.get("Oemclient", "charset")
+        attachments = [attachment.strip() for attachment in CONF.get("Oemclient", "attachments").split(',')]
     except ConfigParser.NoSectionError as e:
         print '%s in oemclient.props found.' % e
         sys.exit()
@@ -125,11 +126,20 @@ def my_encode_multipart_formdata(fields, boundary=None):
 
         if isinstance(value, tuple):
             filename, data = value
-            body.write(b('Content-Type: application/x-www-form-urlencoded; '
-                         'charset="%s"\r\n' % charset))
-            writer(body).write('Content-Disposition: form-data; '
-                               'name="%s"\r\n' % fieldname)
-            body.write('\r\n')
+
+            if fieldname[0:12] == "PWF_FILEPATH":
+                writer(body).write('Content-Disposition: form-data; '
+                                   'filename="%s"; name="%s"\r\n' % (filename,fieldname))
+                body.write(b('Content-Type:; '
+                             'name="%s"\r\n' % filename))
+                body.write('\r\n')
+            else:
+                filename, data = value
+                body.write(b('Content-Type: application/x-www-form-urlencoded; '
+                             'charset="%s"\r\n' % charset))
+                writer(body).write('Content-Disposition: form-data; '
+                                   'name="%s"\r\n' % (fieldname))
+                body.write('\r\n')
 
         else:
             data = value
@@ -165,6 +175,12 @@ def event_create(url=None, file=None):
 
         try:
             payload = {'PWFORM': '38', 'PWF_MBML': file}
+            for index, file in enumerate(attachments):
+                if index == 0:
+                    payload['PWF_FILEPATH'] = (file, open(file, 'rb)'))
+                else:
+                    payload['PWF_FILEPATH_%s' % (index + 1)] = (file, open(file, 'rb'))
+
             result = requests.post(url, files=payload)
             logging.debug(result.text)
             print result.text

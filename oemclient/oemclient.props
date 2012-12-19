@@ -1,7 +1,10 @@
 #This is the properties file to set the URL, Submission XML and Character set.
 #If you specify None for the file, the embedded XML will run.
+#Prod = https://xpress-api.vrli.com/mb/bin/pwisapi.dll
+#Dev = https://developer3.envoyww.com/ea/bin/pwisapi.dll
 
 [Oemclient]
-url = https://developer3.envoyww.com/ea/bin/pwisapi.dll
-file = sce_interruptS.xml
-charset = UTF-8
+url = https://developer3.envoyww.com/control-risks/bin/pwisapi.dll
+file = prime.xml
+charset = ISO-8859-1
+attachments = attachment1.txt, attachment2.txt
