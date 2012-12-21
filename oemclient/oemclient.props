@@ -4,7 +4,8 @@
 #Dev = https://developer3.envoyww.com/ea/bin/pwisapi.dll
 
 [Oemclient]
-url = https://developer3.envoyww.com/control-risks/bin/pwisapi.dll
-file = prime.xml
+url = https://developer3.envoyww.com/peoc3t/bin/pwisapi.dll
+file = peoc3t.xml
 charset = ISO-8859-1
-attachments = attachment1.txt, attachment2.txt
+#Comment out the next line if you are not using attachments.
+#attachments = attachment1.txt, attachment2.txt

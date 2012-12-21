@@ -25,7 +25,10 @@ try:
         url = CONF.get("Oemclient", "url")
         file = CONF.get("Oemclient", "file")
         charset = CONF.get("Oemclient", "charset")
-        attachments = [attachment.strip() for attachment in CONF.get("Oemclient", "attachments").split(',')]
+        try:
+            attachments = [attachment.strip() for attachment in CONF.get("Oemclient", "attachments").split(',')]
+        except ConfigParser.NoOptionError as e:
+            attachments = None
     except ConfigParser.NoSectionError as e:
         print '%s in oemclient.props found.' % e
         sys.exit()
@@ -175,11 +178,12 @@ def event_create(url=None, file=None):
 
         try:
             payload = {'PWFORM': '38', 'PWF_MBML': file}
-            for index, file in enumerate(attachments):
-                if index == 0:
-                    payload['PWF_FILEPATH'] = (file, open(file, 'rb)'))
-                else:
-                    payload['PWF_FILEPATH_%s' % (index + 1)] = (file, open(file, 'rb'))
+            if attachments:
+                for index, file in enumerate(attachments):
+                    if index == 0:
+                        payload['PWF_FILEPATH'] = (file, open(file, 'rb)'))
+                    else:
+                        payload['PWF_FILEPATH_%s' % (index + 1)] = (file, open(file, 'rb'))
 
             result = requests.post(url, files=payload)
             logging.debug(result.text)
