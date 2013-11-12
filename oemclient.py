@@ -16,7 +16,6 @@ try:
     try:
         url = CONF.get("Oemclient", "url")
         file = CONF.get("Oemclient", "file")
-        charset = CONF.get("Oemclient", "charset")
         try:
             attachments = [attachment.strip() for attachment in CONF.get("Oemclient", "attachments").split(',')]
         except ConfigParser.NoOptionError as e:

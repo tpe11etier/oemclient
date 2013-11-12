@@ -54,7 +54,7 @@ settings.update(
     scripts=['oemclient.py'],
     url='https://github.com/tpe11etier/oemclient',
     license='MIT',
-    description='oemclient is a client for the Varolii xPress API',
+    description='oemclient is a client for the Varolii Xpress API',
     long_description=open('README').read(),
     classifiers=[
         'Intended Audience :: Developers',
@@ -64,7 +64,7 @@ settings.update(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7'
     ],
-    # install_requires=required,
+    install_requires=required,
     entry_points={
         'console_scripts': [
             'oemclient = oemclient:main',
