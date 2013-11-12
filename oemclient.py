@@ -8,19 +8,11 @@ import ConfigParser
 import os
 import sys
 
-from io import BytesIO
-from uuid import uuid4
-
-from requests.packages.urllib3.filepost import iter_fields
-from requests.packages.urllib3.packages import six
-from requests.packages.urllib3.packages.six import b
-
-
 writer = codecs.lookup('utf-8')[3]
 CONF = ConfigParser.ConfigParser()
 
 try:
-    CONF.read("oemclient.props")
+    CONF.read(os.getcwd() + "/oemclient.props")
     try:
         url = CONF.get("Oemclient", "url")
         file = CONF.get("Oemclient", "file")
@@ -110,71 +102,19 @@ XML = """
 </Request>
 """
 
-
-def choose_boundary():
-    return uuid4().hex
-
-
-def my_encode_multipart_formdata(fields, boundary=None):
-    """
-    I am overriding this function from urllib3 to get the formatting the way the API accepts it as well as passing
-    in the character set.
-    """
-    body = BytesIO()
-    if boundary is None:
-        boundary = choose_boundary()
-
-    for fieldname, value in iter_fields(fields):
-        body.write(b('--%s\r\n' % (boundary)))
-
-        if isinstance(value, tuple):
-            filename, data = value
-
-            if fieldname[0:12] == "PWF_FILEPATH":
-                writer(body).write('Content-Disposition: form-data; '
-                                   'filename="%s"; name="%s"\r\n' % (filename,fieldname))
-                body.write(b('Content-Type:; '
-                             'name="%s"\r\n' % filename))
-                body.write('\r\n')
-            else:
-                filename, data = value
-                body.write(b('Content-Type: application/x-www-form-urlencoded; '
-                             'charset="%s"\r\n' % charset))
-                writer(body).write('Content-Disposition: form-data; '
-                                   'name="%s"\r\n' % (fieldname))
-                body.write('\r\n')
-
-        else:
-            data = value
-            writer(body).write('Content-Disposition: '
-                               'form-data; name="%s"\r\n' % (fieldname))
-            body.write(b'Content-Type: text/plain\r\n\r\n')
-
-        if isinstance(data, int):
-            data = str(data)  # Backwards compatibility
-
-        if isinstance(data, six.text_type):
-            writer(body).write(data)
-        else:
-            body.write(data)
-
-        body.write(b'\r\n')
-
-    body.write(b('--%s--\r\n' % (boundary)))
-
-    content_type = b('multipart/form-data; boundary=%s' % boundary)
-
-    return body.getvalue(), content_type
-
-
 def event_create(url=None, file=None):
     try:
-        #If no file is passed in and None is the value, the embedded XML will be used.
+        #If no file is passed in and None is the value,
+        #the embedded XML will be used.
         if file == 'None':
             file = XML
-        else:
+        elif 'xmlfiles' in os.listdir(os.curdir):
             file = open(os.path.abspath(os.path.join(os.curdir,
                         'xmlfiles', file)), 'rb').read()
+        else:
+            file = open(os.path.abspath(os.path.join(os.curdir,
+                        file)), 'rb').read()
+
 
         try:
             payload = {'PWFORM': '38', 'PWF_MBML': file}
@@ -185,7 +125,7 @@ def event_create(url=None, file=None):
                     else:
                         payload['PWF_FILEPATH_%s' % (index + 1)] = (file, open(file, 'rb'))
 
-            result = requests.post(url, files=payload)
+            result = requests.post(url, data=payload)
             logging.debug(result.text)
             print result.text
         except Exception as e:
@@ -195,10 +135,8 @@ def event_create(url=None, file=None):
         print "File %s not found.  Be sure you specified a file in oemclient.props" % e
         return None
 
-
 def main():
     event_create(url, file)
-
 
 if __name__ == '__main__':
     main()

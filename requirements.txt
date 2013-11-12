@@ -1,0 +1,3 @@
+# Requirements for the package
+suds==0.4
+requests==2.0.1
