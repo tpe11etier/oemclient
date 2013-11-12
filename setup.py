@@ -15,7 +15,7 @@ except:
     pass
 
 APP_NAME = 'oemclient'
-VERSION = '0.1.0'
+VERSION = '0.1.1'
 
 # Grab requirments.
 with open('requirements.txt') as f:
@@ -55,7 +55,7 @@ settings.update(
     url='https://github.com/tpe11etier/oemclient',
     license='MIT',
     description='oemclient is a client for the Varolii Xpress API',
-    long_description=open('README').read(),
+    long_description=open('README.md').read(),
     classifiers=[
         'Intended Audience :: Developers',
         'Natural Language :: English',
